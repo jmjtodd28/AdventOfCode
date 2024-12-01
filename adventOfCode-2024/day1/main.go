@@ -11,44 +11,44 @@ import (
 )
 
 func main() {
-  t0 := time.Now()
+	t0 := time.Now()
 	fmt.Println("Part 1 answer:", part1(), "took", time.Since(t0))
-  t0 = time.Now()
+	t0 = time.Now()
 	fmt.Println("Part 2 answer:", part2(), "took", time.Since(t0))
 
 }
 
 func part2() int {
-  filename := "data.txt"
+	filename := "data.txt"
 
-  file, err := os.Open(filename)
-  if err != nil {
-    panic(err)
-  }
-  defer file.Close()
+	file, err := os.Open(filename)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
 
-  scan := bufio.NewScanner(file)
+	scan := bufio.NewScanner(file)
 
-  rmap := make(map[int]int)
-  l := []int{}
+	rmap := make(map[int]int)
+	l := []int{}
 
-  for scan.Scan(){
-    line := scan.Text()
-    split := strings.Split(line, "   ")
+	for scan.Scan() {
+		line := scan.Text()
+		split := strings.Split(line, "   ")
 
-    lv, _ := strconv.Atoi(split[0])
-    rv, _ := strconv.Atoi(split[1])
+		lv, _ := strconv.Atoi(split[0])
+		rv, _ := strconv.Atoi(split[1])
 
-    l = append(l, lv)
-    rmap[rv]++
-  }
+		l = append(l, lv)
+		rmap[rv]++
+	}
 
-  total := 0
-  for _, l := range l {
-    total += l * rmap[l]
-  }
+	total := 0
+	for _, l := range l {
+		total += l * rmap[l]
+	}
 
-  return total
+	return total
 }
 
 func part1() int {
@@ -58,7 +58,7 @@ func part1() int {
 	if err != nil {
 		panic(err)
 	}
-  defer file.Close()
+	defer file.Close()
 
 	scn := bufio.NewScanner(file)
 
